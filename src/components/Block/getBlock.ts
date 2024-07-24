@@ -8,10 +8,9 @@ export async function getBlock({
   ht: string;
 }) {
   console.log(`Fetching: GET ${endpoint}?q=${ht}`);
-  const res = await fetch(
-    `http://localhost:${process.env.HTTP_PORT || 3000}${endpoint}?q=${ht}`,
-    { method: "GET" },
-  );
+  const res = await fetch(`http://localhost:443${endpoint}?q=${ht}`, {
+    method: "GET",
+  });
   const json = await res.json();
   console.log("Fetched Result:", json);
   const result = BlockData.safeParse(json);
